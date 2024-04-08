@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Plagiarism Checker - Result</title>
+    <style>
+        body {
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        }
+
+        .highlight {
+            background-color: rgb(255, 0, 0);
+        }
+
+        .back-button {
+            margin-top: 40px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Plagiarism Checker - Result</h1>
+    <h3>Text 1:</h3>
+    <p>{{ text1 | safe }}</p>
+    <h3>Text 2:</h3>
+    <p>{{ text2 | safe }}</p>
+    <h3>Similarity: {{ similarity }}</h3>
+    <a href="/" class="back-button" input type="submit" value="Compare other Text"></a>
+    <input type="submit" value="Check Plagiarism">
+</body>
+</html>

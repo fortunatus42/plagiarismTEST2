@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Plagiarism Checker</title>
+    <script>
+        function clearTextAreas() {
+            document.getElementsByName('text1')[0].value = '';
+            document.getElementsByName('text2')[0].value = '';
+        }
+    </script>
+</head>
+<body>
+    <h1>Plagiarism Checker</h1>
+    <form method="POST" action="/">
+        <textarea name="text1" rows="10" cols="50" placeholder="Enter text 1"></textarea><br>
+        <textarea name="text2" rows="10" cols="50" placeholder="Enter text 2"></textarea><br>
+        <input type="submit" value="Check Plagiarism">
+        <button type="button" onclick="clearTextAreas()">Clear</button>
+    </form>
+</body>
+</html>
