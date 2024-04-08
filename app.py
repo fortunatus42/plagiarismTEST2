@@ -1,9 +1,11 @@
 from markupsafe import Markup
 from difflib import SequenceMatcher
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, flash
 import spacy
 
-app = Flask(__name__)
+app = Flask(__name__, template_folder='templates')
+app.secret_key = 'your_secret_key_here'  # Required for flashing messages
+
 nlp = spacy.load("en_core_web_sm")
 
 def check_plagiarism(text1, text2):
@@ -42,21 +44,24 @@ def check_plagiarism(text1, text2):
         last_match_end2 = end2
 
     highlighted_text1 += text1[last_match_end1:]
-    highlighted_text2 += text2[last_match_end1:]
+    highlighted_text2 += text2[last_match_end2:]
 
     similarity_ratio = int(round(matcher.ratio() * 100))  # Calculate similarity as percentage
     return f"{similarity_ratio}%", Markup(highlighted_text1), Markup(highlighted_text2)  # Return similarity as a percentage with % symbol
-
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
     if request.method == 'POST':
         text1 = request.form['text1']
         text2 = request.form['text2']
+
+        if not text1.strip() or not text2.strip():
+            flash('Please fill in both text areas.', 'error')
+            return render_template('index.html')
+
         similarity, highlighted_text1, highlighted_text2 = check_plagiarism(text1, text2)
         return render_template('result.html', similarity=similarity, text1=highlighted_text1, text2=highlighted_text2)
     return render_template('index.html')
-
 
 if __name__ == '__main__':
     app.run(debug=True)

@@ -10,6 +10,15 @@
     </script>
 </head>
 <body>
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            {% for category, message in messages %}
+                {% if category == 'error' %}
+                    <div style="color: red;">{{ message }}</div>
+                {% endif %}
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
     <h1>Plagiarism Checker</h1>
     <form method="POST" action="/">
         <textarea name="text1" rows="10" cols="50" placeholder="Enter text 1"></textarea><br>
