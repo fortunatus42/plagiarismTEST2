@@ -31,10 +31,10 @@ def check_plagiarism(text1, text2):
         highlighted_text2 += " ".join(text2_words[last_match_end2:start2]) + " "
         for i in range(match.size):
             if text1_words[start1 + i] == text2_words[start2 + i]:
-                highlighted_text1 += '<span style="color:red">'
+                highlighted_text1 += '<span style="color: red; font-weight: bold; background-color: yellow;">'
                 highlighted_text1 += text1_words[start1 + i]
                 highlighted_text1 += '</span> '
-                highlighted_text2 += '<span style="color:red">'
+                highlighted_text2 += '<span style="color: red; font-weight: bold; background-color: yellow;">'
                 highlighted_text2 += text2_words[start2 + i]
                 highlighted_text2 += '</span> '
             else:
