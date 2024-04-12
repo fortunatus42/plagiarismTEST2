@@ -40,5 +40,5 @@ function hideLoadingSpinner() {
     // Set a timeout to hide the spinner after 3 seconds
     spinnerTimeout = setTimeout(function() {
         document.getElementById('loading-spinner').style.display = 'none';
-    }, 3000); // 3000 milliseconds = 3 seconds
+    }, 5000); // 3000 milliseconds = 3 seconds
 }

@@ -120,19 +120,19 @@ textarea:last-child {
 }
 
  /* Add styles for the responsive layout */
- @media (max-width: 768px) {
-    #text-area-container {
-        flex-direction: column;
-        height: auto;
-    }
+        @media (max-width: 768px) {
+            #text-area-container {
+                flex-direction: column;
+                height: auto;
+            }
 
-    textarea {
-        width: 100%;
-        margin: 0 0 20px 0;
-    }
+            textarea {
+                width: 100%;
+                margin: 0 0 20px 0;
+            }
 
-    #button-container {
-        position: relative;
-        bottom: 0;
-    }
-}
+            #button-container {
+                position: relative;
+                bottom: 0;
+            }
+        }
