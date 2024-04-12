@@ -3,6 +3,7 @@
 <head>
     <title>Plagiarism Checker</title>
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+    <script src="{{ url_for('static', filename='scripts.js') }}"></script>
 </head>
 <body>
     {% with messages = get_flashed_messages(with_categories=true) %}
@@ -14,41 +15,19 @@
             {% endfor %}
         {% endif %}
     {% endwith %}
-    <h1>Plagiarism Checker</h1>
+    <h3>PLAGIARISM CHECKER</h3>
     <form method="POST" action="/" onsubmit="showLoadingSpinner();">
-        <textarea name="text1" rows="10" cols="50" placeholder="Enter text 1"></textarea><br>
-        <textarea name="text2" rows="10" cols="50" placeholder="Enter text 2"></textarea><br>
-        <input id="submit-btn" type="submit" value="Check Plagiarism">
-        <button type="button" onclick="clearTextAreas()">Clear</button>
+        <div id="text-area-container">
+            <textarea id="text-area-1" name="text1" rows="10" cols="50" placeholder="Enter text 1"></textarea>
+            <textarea id="text-area-2" name="text2" rows="10" cols="50" placeholder="Enter text 2"></textarea>
+        </div>
+        <div id="button-container">
+            <button id="submit-btn" type="submit">Check Plagiarism</button>
+            <button id="clear-btn" type="button" onclick="clearTextAreas()">Clear</button>
+        </div>
     </form>
     <div id="loading-spinner">
         <div>Loading...</div>
     </div>
-
-    <script>
-        function clearTextAreas() {
-            var text1 = document.getElementsByName('text1')[0];
-            var text2 = document.getElementsByName('text2')[0];
-            if (text1 && text2) {
-                text1.value = '';
-                text2.value = '';
-            }
-        }
-
-        document.addEventListener('DOMContentLoaded', function() {
-            // Hide the loading spinner after the page has loaded
-            document.getElementById('loading-spinner').style.display = 'none';
-        });
-
-        function showLoadingSpinner() {
-            // Show the loading spinner
-            document.getElementById('loading-spinner').style.display = 'flex';
-        }
-
-        function hideLoadingSpinner() {
-            // Hide the loading spinner
-            document.getElementById('loading-spinner').style.display = 'none';
-        }
-    </script>
 </body>
 </html>

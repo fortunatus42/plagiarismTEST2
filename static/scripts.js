@@ -1,5 +1,18 @@
+function clearTextAreas() {
+    var text1 = document.getElementsByName('text1')[0];
+    var text2 = document.getElementsByName('text2')[0];
+    if (text1 && text2) {
+        text1.value = '';
+        text2.value = '';
+    }
+}
+
+function showLoadingSpinner() {
+    document.getElementById('loading-spinner').style.display = 'flex';
+}
+
 document.addEventListener('DOMContentLoaded', function() {
-    var form = document.querySelector('form');
+    var form = document.getElementById('plagiarism-form');
     form.addEventListener('submit', function(event) {
         event.preventDefault();  // Prevent default form submission
         showLoadingSpinner();    // Show the loading spinner
@@ -23,16 +36,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
 var spinnerTimeout;
 
-function showLoadingSpinner() {
-    // Show the loading spinner
-    document.getElementById('loading-spinner').style.display = 'flex';
-    // Clear any previous timeout
-    clearTimeout(spinnerTimeout);
-}
-
 function hideLoadingSpinner() {
-    // Set a timeout to hide the spinner after 1 second
+    // Set a timeout to hide the spinner after 3 seconds
     spinnerTimeout = setTimeout(function() {
-        document.getElementById('loading-spinner').style.display = 'none'
-    }, 5000); // 1000 milliseconds = 1 second
+        document.getElementById('loading-spinner').style.display = 'none';
+    }, 3000); // 3000 milliseconds = 3 seconds
 }
