@@ -41,7 +41,7 @@ body{
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 20px;
+    padding: 60px;
     position: relative;
     margin: 0 auto;
     width: 1500px;
@@ -124,6 +124,7 @@ textarea:last-child {
             #text-area-container {
                 flex-direction: column;
                 height: auto;
+                width: auto;
             }
 
             textarea {
